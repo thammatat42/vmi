@@ -331,14 +331,16 @@
                                                 </div>
                                                 <?php if($row['C_STOCK'] <= 3 && $row['C_STOCK'] <> 0){ ?>
                                                     <div class="alert alert-warning text-center">
-                                                        <i class="fas fa-bullhorn"></i> เเจ้งเตือน: สินค้าใกล้หมดเเล้ว <i class="fas fa-exclamation"></i>
+                                                        <i class="fas fa-exclamation-triangle"></i> เเจ้งเตือน: สินค้าใกล้หมดเเล้ว <i class="fas fa-exclamation"></i>
                                                     </div>
                                                 <?php } elseif($row['C_STOCK'] == 0) { ?>
                                                     <div class="alert alert-danger text-center">
-                                                        <i class="fas fa-bullhorn"></i> เเจ้งเตือน: สินค้าหมดเเล้ว <i class="fas fa-exclamation"></i>
+                                                        <i class="fas fa-exclamation-triangle"></i> เเจ้งเตือน: สินค้าหมดเเล้ว <i class="fas fa-exclamation"></i>
                                                     </div>
                                                 <?php } else { ?>
-                                                    
+                                                    <div class="alert alert-success text-center">
+                                                        <i class="fas fa-exclamation-triangle"></i> เเจ้งเตือน: สินค้าปกติ <i class="fas fa-exclamation"></i>
+                                                    </div>
                                                 <?php } ?>
                                             </div>
                                         </a>

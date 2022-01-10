@@ -309,9 +309,10 @@
 
         $(document).on('click', '#positive', function(){
             const input_number = parseInt($("#input_number").val()); 
+            const check_stock = $("#stock_value").attr('at');
 
             // limit การสั่ง order
-            if (input_number < 5){
+            if (input_number < check_stock){
                 const set_value = $('#input_number').val(input_number + 1);
             }
 
@@ -379,11 +380,11 @@
 
         $(document).on('change', '#input_number', function(){
             const input_number = parseInt($("#input_number").val());
-            // const check_stock = $("#stock_value").attr('at');
+            const check_stock = $("#stock_value").attr('at');
 
             // set ค่า max value
-            if(input_number > 5) {
-                const set_value = $('#input_number').val(5);
+            if(input_number > check_stock) {
+                const set_value = $('#input_number').val(check_stock);
             }
 
             if (check_this_year > 0){
@@ -449,6 +450,7 @@
                 data: { size:size,send_group_id:send_group_id,function:'size_change' },
                 dataType:"text"
             }).done(function(data) {
+                set_value = $('#input_number').val(1);
                 const check_result = jQuery.parseJSON( data );
                 $('#amount').html(check_result.amount);
                 $('#check_order_button').html(check_result.check_stock);

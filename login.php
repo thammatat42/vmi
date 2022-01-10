@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="assets/css/adminlte.min.css">
   <link rel="stylesheet" href="plugins/toastr/toastr.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <style>
 
     .text-primary { 
@@ -59,7 +60,7 @@
     }
     .bg-img {
       /* The image used */
-      background-image: url("assets/images/VMI.png");
+      background-image: url("assets/images/vmi-bg.jpg");
 
       min-height: 380px;
 
@@ -71,7 +72,7 @@
     }
     .bg-blur {
       /* The image used */
-      background-image: url("assets/images/VMI.png");
+      background-image: url("assets/images/vmi-bg.jpg");
       min-height: 380px;
       backdrop-filter: blur(5px);
       /* Center and scale the image nicely */
@@ -84,17 +85,28 @@
       background: rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(8px);
     }
+    .color {
+      color: white !important;
+    }
+
   </style>
 </head>
 <body>
 <header class="bg"></header>
 <section class="d-flex align-items-center min-vh-100 bg-img">
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-right">
+      <section class="col-lg-6">
+        <div class="p-3 p-md-4 text-center">
+          <h1 class="text-center text-primary font-weight-bold color"> VMI SYSTEM</h1>
+          <h4 class="color">Vendor Management Inventory System</h4> 
+          <img style="width: 200px; height: 200px;" src="assets/images/vmi3.png" alt="Preview">
+        </div>
+      </section>
       <section class="col-lg-6">
         <div class="card shadow p-3 p-md-4 blur">
-          <h1 class="text-center text-primary font-weight-bold">VMI Uniforms</h1>
-          <h4 class="text-center">Web Application</h4> 
+          <h1 class="text-center text-primary font-weight-bold color"> <u>Sign IN</u></h1>
+          <!-- <h4 class="text-center">Web Application</h4>  -->
           <div class="card-body">
             <!-- HTML Form Login --> 
             <form id="formLogin">
@@ -106,7 +118,7 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text px-2">ชื่อผู้ใช้งาน</div>
                   </div>
-                  <input type="text" class="form-control" name="username" placeholder="Username" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>">
+                  <input type="text" class="form-control" name="username" placeholder="Employee ID" value="<?php if(isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>">
                 </div>
               </div>
               <div class="form-group col-sm-12">
@@ -143,6 +155,13 @@
         </div>
       </section>
     </div>
+    <footer class="container-fluid footer">
+      <div class="row color">
+        <div class="col-12 col-sm-12"><i class="fas fa-circle" style="font-size: 8px;"></i>&nbsp; Request Uniform with criteria per year</div>
+        <div class="col-12 col-sm-12"><i class="fas fa-circle" style="font-size: 8px;"></i>&nbsp; Uniform ordering: Dedection with salary automatically</div>
+        <div class="col-12 col-sm-12"><i class="fas fa-circle" style="font-size: 8px;"></i>&nbsp; Stock control and manage by outsource</div>
+      </div>
+    </footer>
   </div>
 </section>
 <div id="overlay">

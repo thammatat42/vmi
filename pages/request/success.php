@@ -1,5 +1,7 @@
 <?php 
     require_once('../authen.php'); 
+
+    $date = date('Y-m-d');
 ?>
 <!DOCTYPE html>
 <html lang="en" class="notranslate" translate="no">
@@ -93,6 +95,19 @@
                                         style="text-align: center;">
                                 </table>
                             </div> -->
+                            <input type="hidden" value="<?php echo $date; ?>" id="date_id">
+
+                            <?php 
+                                
+                                $filename = '../../service/request/excel/report_payment_' .$date. '.csv';
+                                if (file_exists($filename)) {
+                                    $checkfiles = 0;
+                                } else {
+                                    $checkfiles = 1;
+                                }
+                               
+                            ?>
+                            <input type="hidden" value="<?php echo $checkfiles; ?>" id="file_id">
 
                             <div class="card-body">
                                 <div class="form-group">
@@ -167,6 +182,9 @@
 
 
 <script>
+    const date = $('#date_id').val();
+    const files = $('#file_id').val();
+    
     $(function(){
         // cal comma
         function numberWithCommas(x) {
@@ -339,11 +357,18 @@
         });
 
         $(document).on('click', '#export_excel', function(resp){
+            const date_1 = '../../service/request/excel/report_payment_' + date + '.csv';
+            // console.log(date_1);
             $("#overlay").fadeIn(300);
-            setTimeout((resp) => {
-                window.location.href = "../../service/request/export.php";
-            }, 1000)
-            
+
+            if(files == '0') {
+                window.location.href = date_1;
+            } else {
+                if(files == '1') {
+                    window.location.href = "../../service/request/export.php"
+                }
+                
+            }
             $("#overlay").fadeOut(300);
         });
 

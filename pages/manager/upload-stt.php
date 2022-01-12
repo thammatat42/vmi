@@ -114,7 +114,7 @@
             });
             
         }).fail(function(resp) {
-            console.log(resp);
+            $("#overlay").fadeOut(300);
             const check_log = jQuery.parseJSON( resp.responseText );
             Swal.fire({
                 icon: 'error',

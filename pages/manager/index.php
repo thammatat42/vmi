@@ -99,6 +99,15 @@
         }).done(function(data) {
             let tableData = []
             data.response.forEach(function (item, index){
+                console.log(item.STATUS_TYPE)
+
+                if(item.STATUS_TYPE == 'Admin') {
+                    item.STATUS_TYPE = `<span class="badge badge-danger">${item.STATUS_TYPE}</span>`;
+                } else if(item.STATUS_TYPE == 'Vendor') {
+                    item.STATUS_TYPE = `<span class="badge badge-warning">${item.STATUS_TYPE}</span>`;
+                } else {
+                    item.STATUS_TYPE = `<span class="badge badge-primary">${item.STATUS_TYPE}</span>`;
+                }
                 tableData.push([    
                     ++index,
                     item.USERNAME,
@@ -106,7 +115,7 @@
                     item.LNAME,
                     item.EMAIL,
                     item.UPDATE_DATE,
-                    `<span class="badge badge-primary">${item.STATUS_TYPE}</span>`,
+                    item.STATUS_TYPE,
                     `<div class="btn-group" role="group">
                         <a href="form-edit.php?id=${item.UID}" type="button" class="btn btn-warning text-white">
                             <i class="far fa-edit"></i> แก้ไข

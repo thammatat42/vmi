@@ -83,7 +83,7 @@
         <?php 
             if($_SESSION['AD_STATUS'] == 'Admin'){?>
             <a href="../dashboard/">
-                <img src="../../assets/images/hoodie2.png" 
+                <img src="../../assets/images/hoodie3.png" 
                     alt="hoodie Logo" 
                     width="50px"
                     class="img-circle elevation-3">
@@ -91,7 +91,7 @@
             </a>
         <?php } elseif($_SESSION['AD_STATUS'] == 'Vendor') { ?>
             <a href="../request/">
-                <img src="../../assets/images/hoodie2.png" 
+                <img src="../../assets/images/hoodie3.png" 
                     alt="hoodie Logo" 
                     width="50px"
                     class="img-circle elevation-3">
@@ -99,7 +99,7 @@
             </a>
         <?php } else { ?>
             <a href="../order/">
-                <img src="../../assets/images/hoodie2.png" 
+                <img src="../../assets/images/hoodie3.png" 
                     alt="hoodie Logo" 
                     width="50px"
                     class="img-circle elevation-3">
@@ -119,21 +119,21 @@
     <?php 
         if($_SESSION['AD_STATUS'] == 'Admin'){?>
         <a href="../dashboard/" class="brand-link">
-            <img src="../../assets/images/hoodie2.png" 
+            <img src="../../assets/images/hoodie3.png" 
                 alt="Admin Logo" 
                 class="brand-image img-circle elevation-3">
             <span class="led">VMI Uniforms</span>
         </a>
     <?php } elseif($_SESSION['AD_STATUS'] == 'Vendor') { ?>
         <a href="../request/" class="brand-link">
-            <img src="../../assets/images/hoodie2.png" 
+            <img src="../../assets/images/hoodie3.png" 
                 alt="Admin Logo" 
                 class="brand-image img-circle elevation-3">
             <span class="led">VMI Uniforms</span>
         </a>
     <?php }else { ?>
         <a href="../order/" class="brand-link">
-            <img src="../../assets/images/hoodie2.png" 
+            <img src="../../assets/images/hoodie3.png" 
                 alt="Admin Logo" 
                 class="brand-image img-circle elevation-3">
             <span class="led">VMI Uniforms</span>

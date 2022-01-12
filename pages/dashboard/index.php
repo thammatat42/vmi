@@ -65,7 +65,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google" content="notranslate" />
   <title>หน้าหลัก | VMI</title>
-  <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/hoodie2.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/hoodie3.ico">
   <!-- stylesheet -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
@@ -134,7 +134,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="../../assets/images/hoodie2.png" alt="VMILogo" height="60" width="60">
+        <img class="animation__shake" src="../../assets/images/hoodie3.png" alt="VMILogo" height="60" width="60">
     </div>
     <?php include_once('../includes/sidebar.php') ?>
     <div class="content-wrapper pt-3">

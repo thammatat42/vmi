@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>VMI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/x-icon" href="assets/images/hoodie2.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/images/hoodie3.ico">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="assets/css/adminlte.min.css">

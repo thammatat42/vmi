@@ -4,10 +4,10 @@
  * Connect Database PHP PDO
  */
 session_start();
-error_reporting(E_ALL); 
+// error_reporting(E_ALL); 
 
 /* On production */
-// error_reporting(0);
+error_reporting(0);
 
 date_default_timezone_set('Asia/Bangkok');
 
@@ -20,13 +20,13 @@ class Database {
      * @var string|null
      * @return PDO
      */
-    // private $host = "54.179.74.126";
-    private $host = "localhost";
+    private $host = "54.179.74.126";
+    // private $host = "localhost";
     private $dbname = "vmi";
-    // private $username = "baadmin";
-    // private $password = "P@ssw0rd1234%";
-    private $username = "root";
-    private $password = "";
+    private $username = "baadmin";
+    private $password = "P@ssw0rd1234%";
+    // private $username = "root";
+    // private $password = "";
     private $conn = null;
 
     public function connect() {

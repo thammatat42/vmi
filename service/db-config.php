@@ -2,11 +2,11 @@
 
     class DBController {
 
-        private $hostname       =       "localhost";
+        private $hostname       =       "54.179.74.126";
 
-        private $username       =       "root";
+        private $username       =       "baadmin";
 
-        private $password       =       "";
+        private $password       =       "P@ssw0rd1234%";
 
         private $db             =       "vmi";
 

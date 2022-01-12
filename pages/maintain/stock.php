@@ -664,47 +664,47 @@
                     { title: "สถานะ", className: "align-middle"}
                 ],
                 responsive: true,
-                initComplete: function () {
-                    $(document).on('click', '#cancel_order', function(){ 
-                        let id = $(this).data('id')
-                        let index = $(this).data('index')
-                        let size = $(this).data('size')
-                        // console.log(id);
-                        Swal.fire({
-                            text: "คุณแน่ใจหรือไม่..ที่จะยกเลิกรายการนี้?",
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonText: 'ใช่!',
-                            cancelButtonText: 'ยกเลิก'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                $.ajax({  
-                                    type: "POST",  
-                                    url: "../../service/request/cancel-order.php",  
-                                    data: { id: id,index: index, size:size }
-                                }).done(function(resp) {
-                                    Swal.fire({
-                                        text: 'รายการของคุณถูกยกเลิกเรียบร้อยเเล้ว..',
-                                        icon: 'success',
-                                        confirmButtonText: 'ตกลง',
-                                    }).then((result) => {
-                                        location.reload()
-                                    })
-                                }).fail(function(resp) {
-                                    const check_log = jQuery.parseJSON( resp.responseText );
-                                    Swal.fire({
-                                        icon: 'error',
-                                        title: 'เกิดข้อผิดพลาด..',
-                                        text: check_log.message,
-                                        footer: 'กรุณายกเลิกใหม่อีกครั้ง!!'
-                                    }).then((result) => {
-                                        location.reload()
-                                    })
-                                })
-                            }
-                        })
-                    })
-                },
+                // initComplete: function () {
+                //     $(document).on('click', '#cancel_order', function(){ 
+                //         let id = $(this).data('id')
+                //         let index = $(this).data('index')
+                //         let size = $(this).data('size')
+                //         // console.log(id);
+                //         Swal.fire({
+                //             text: "คุณแน่ใจหรือไม่..ที่จะยกเลิกรายการนี้?",
+                //             icon: 'warning',
+                //             showCancelButton: true,
+                //             confirmButtonText: 'ใช่!',
+                //             cancelButtonText: 'ยกเลิก'
+                //         }).then((result) => {
+                //             if (result.isConfirmed) {
+                //                 $.ajax({  
+                //                     type: "POST",  
+                //                     url: "../../service/request/cancel-order.php",  
+                //                     data: { id: id,index: index, size:size }
+                //                 }).done(function(resp) {
+                //                     Swal.fire({
+                //                         text: 'รายการของคุณถูกยกเลิกเรียบร้อยเเล้ว..',
+                //                         icon: 'success',
+                //                         confirmButtonText: 'ตกลง',
+                //                     }).then((result) => {
+                //                         location.reload()
+                //                     })
+                //                 }).fail(function(resp) {
+                //                     const check_log = jQuery.parseJSON( resp.responseText );
+                //                     Swal.fire({
+                //                         icon: 'error',
+                //                         title: 'เกิดข้อผิดพลาด..',
+                //                         text: check_log.message,
+                //                         footer: 'กรุณายกเลิกใหม่อีกครั้ง!!'
+                //                     }).then((result) => {
+                //                         location.reload()
+                //                     })
+                //                 })
+                //             }
+                //         })
+                //     })
+                // },
                 responsive: {
                     details: {
                         display: $.fn.dataTable.Responsive.display.modal( {

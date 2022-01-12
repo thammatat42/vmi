@@ -386,7 +386,7 @@
                     $(document).on('click', '#delete', function(){ 
                         let id = $(this).data('id')
                         let index = $(this).data('index')
-                        console.log(id);
+                        // console.log(id);
                         Swal.fire({
                             text: "คุณแน่ใจหรือไม่...ที่จะลบรายการนี้?",
                             icon: 'warning',
@@ -428,7 +428,7 @@
                         let index = $(this).data('index')
 
                         var check_id = $('#value_id').val(id);
-                        console.log(id);
+                        // console.log(id);
 
                         $('#result').html('');
                         $.ajax({  

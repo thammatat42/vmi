@@ -120,7 +120,7 @@
                     // console.log('test');
                 });
             }).fail(function(resp) {
-                console.log(resp);
+                // console.log(resp);
                 Swal.fire({
                     icon: 'error',
                     title: 'เกิดข้อผิดพลาด..',

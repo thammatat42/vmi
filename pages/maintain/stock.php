@@ -491,7 +491,7 @@
                         if(size == null) {
 
                         } else {
-                            console.log(size);
+                            // console.log(size);
                             $.ajax({  
                                 type: "POST",  
                                 url: "../../service/maintain/change-size.php",  

@@ -1,0 +1,127 @@
+<?php
+function LDAP_LOGIN($username,$password,$conn,$connect,$pages)
+{
+	set_time_limit (5);
+    //ob_start();    
+    
+    
+    $Username = urlencode($username);
+    $Password = urlencode($password);
+
+    if(strlen($Username) == 10) {
+        $url = "http://43.72.228.147:3000/api/login/?gid=".$Username."&password=".$Password; 
+
+        $str_token = '956a9947ccceae2472dcc7a67eb4669819267ae5';
+
+        $context = stream_context_create(array(
+            'http' => array(
+                'header'  => "Authorization: Token " .$str_token,
+                'timeout' => 10 //1200 Seconds is 20 Minutes
+            )
+        ));
+        
+        $data = file_get_contents($url, false, $context);
+        
+        
+        if(!$data)
+        {
+            
+            echo "<script>alert('Server authenticateUser not response in 5 sec')</script>";
+            return false;
+        }
+
+        $array = json_decode($data, true);
+    } else {
+        if(strlen($username) == 10){
+            $username = substr($username,2);
+        } else {
+            $username = $username;
+        }
+        
+        
+
+        $stmt = $connect->prepare("SELECT A.*,B.POSITION,B.DEPARTMENT,B.LOCATION,B.PLANT_LOCATION,C.EMP_TYPE FROM tb_user AS A INNER JOIN
+                                    tb_all_user AS B ON A.UID = B.UID INNER JOIN
+                                    tb_emp_group_master as C ON B.POSITION = C.EMP_POSITION
+                                    WHERE A.USERNAME = :username AND A.STATUS_CHG = '0'");
+        $stmt->execute(array(":username" => $username));
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+
+        
+
+        $_SESSION['department'] = $result->DEPARTMENT;
+        $_SESSION['position'] = $result->POSITION;
+        $_SESSION['plant_location'] = $result->PLANT_LOCATION;
+        $_SESSION['emp_type'] = $result->EMP_TYPE;
+    }
+    
+    
+    if($array[RESULT] == "PASS") {
+
+		$user_id = substr($username,2,10);
+		$array['IMAGE'] = "http://43.72.228.147:8000/attend/img_opt/$user_id.jpg";
+        $gid_array = substr($array['GID'],2);
+        $_SESSION[gid] = $gid_array;
+        $_SESSION[emp_name] = $array['NAME'];
+        $_SESSION[emp_email] =  $array['EMAIL'];
+        $_SESSION[emp_dept]  =  $array['DEPT'];
+        $_SESSION[emp_company] =  $array['COMPANY']; 
+        $AD_LOGIN2 = 'Admin';
+        $_SESSION[STATUS_TYPE] = $AD_LOGIN2;
+
+        $gid = $array['GID'];
+        $emp_name = $array['NAME'];
+        $emp_email = $array['EMAIL'];
+        $emp_dept = $array['DEPT'];
+        $emp_company = $array['COMPANY'];
+
+        $count = $connect->exec("UPDATE tb_user SET UPDATE_DATE = '".date("Y-m-d H:i:s")."' WHERE UID = $gid");
+        $_SESSION[status] = $result->UPDATE_DATE;
+        $_SESSION[img_url] = $result->IMG;
+        return true;
+    }
+    else
+    {
+        if( !empty($result) && md5($password) == $result->PASSWORD ){
+
+            $stmt = $connect->prepare("SELECT * FROM tb_user WHERE USERNAME = :username AND STATUS_CHG = '0' and cast(NOW() as Date) < EXPIRED_DATE");
+            $stmt->execute(array(":username" => $username));
+            $result = $stmt->fetch(PDO::FETCH_OBJ);
+            
+
+            if(!empty($result)) {
+                $_SESSION[gid] = $result->UID;
+                $emp_name = $result->FNAME.' '.$result->LNAME;
+                $_SESSION[emp_name] = $emp_name;
+
+                $timer = date("Y-m-d H:i:s");
+                
+                $sql = "UPDATE tb_user SET UPDATE_DATE = :timer WHERE UID = :UID";
+                $stmt= $connect->prepare($sql);
+                $stmt->execute(array("timer" => $timer, "UID" => $result->UID));
+                $_SESSION[status] = $result->UPDATE_DATE;
+                $_SESSION[STATUS_TYPE] = $result->STATUS_TYPE;
+                $_SESSION[img_url] = $result->IMG;
+                $_SESSION[emp_email] =  $result->EMAIL;
+
+                
+                
+                return true;
+            } else {
+                http_response_code(400);
+                echo json_encode(array('status' => 3, 'message' => 'Your password is expired.'));
+
+                return false;
+            }
+
+            
+        } else {
+            http_response_code(401);
+            echo json_encode(array('status' => false, 'message' => 'No authorized on system!'));
+
+            return false;
+        }
+    }
+}
+
+?>
